@@ -1,0 +1,12 @@
+/.idea
+/lab_1/.idea/
+/lab_2/.idea/
+/lab_3/.idea/
+/lab_4/.idea/
+
+/lab_1/target/
+/lab_2/target/
+/lab_3/target/
+/lab_4/target/
+
+*.iml
