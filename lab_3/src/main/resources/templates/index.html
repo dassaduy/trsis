@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <script th:src="@{/main.js}"></script>
+
+    <title>Учет</title>
+</head>
+<body ng-app="LabTestResultManagement" ng-controller="LabTestResultController">
+
+<h2>Учет медицинских лабораторных показателей сдачи крови пациента поликлиники</h2>
+<div>
+    <table border="1" >
+        <tr>
+            <th>ID</th>
+            <th>Пациент</th>
+            <th>Дата</th>
+            <th>Гемоглобин</th>
+            <th>Сахар</th>
+            <th>АЛТ</th>
+            <th>АСТ</th>
+        </tr>
+        <tr ng-repeat="result in results">
+            <td>{{ result.id }}</td>
+            <td>{{ result.patient }}</td>
+            <td>{{ result.date }}</td>
+            <td>{{ result.hemoglobin }}</td>
+            <td>{{ result.glucose }}</td>
+            <td>{{ result.alt }}</td>
+            <td>{{ result.ast }}</td>
+        </tr>
+    </table>
+</div>
+
+<h3>Добавить запись</h3>
+
+<form ng-submit="addResult()">
+    <table border="0">
+        <tr>
+            <td>Пациент</td>
+            <td><input type="text" name='patient' ng-model="resultForm.patient"></td>
+        </tr>
+        <tr>
+            <td>Гемоглобин</td>
+            <td><input type="number" min="0" step="1"  name='hemoglobin' ng-model="resultForm.hemoglobin"></td>
+        </tr>
+        <tr>
+            <td>Сахар</td>
+            <td><input type="text" pattern="\d{1,3}(\.\d{1})?" name='glucose' ng-model="resultForm.glucose"></td>
+        </tr>
+        <tr>
+            <td>АЛТ</td>
+            <td><input type="number" min="0" step="1"  name='alt' ng-model="resultForm.alt"></td>
+        </tr>
+        <tr>
+            <td>АСТ</td>
+            <td><input type="number" min="0" step="1"  name='ast' ng-model="resultForm.ast"></td>
+            <td> <button type='submit'>Добавить</button></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Поиск записей</h3>
+<form ng-submit="refreshResultsData()">
+    <table border="0">
+        <tr>
+            <td>ID</td>
+            <td><input name='id' ng-model="resultForm.id"></td>
+        </tr>
+        <tr>
+            <td>Пациент</td>
+            <td><input name='patient' ng-model="resultForm.patient"></td>
+        </tr>
+        <tr>
+            <td>Дата</td>
+            <td><input type="text" pattern="\d{4}-\d{2}-\d{2}" name='date' ng-model="resultForm.date"></td>
+            <td> <button type='submit'>Поиск</button></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Удалить запись</h3>
+
+<form ng-submit="deleteResult()">
+    <table border="0">
+        <tr>
+            <td>ID</td>
+            <td><input ng-model="resultForm.id" name='id'></td>
+            <td><button type='submit'>Удалить</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

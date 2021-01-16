@@ -1,0 +1,10 @@
+2021-01-10 00:34:46 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM PATIENTS
+
+SELECT[*] * FROM LAB_RESULTS"
+Syntax error in SQL statement "SELECT * FROM PATIENTS
+
+SELECT[*] * FROM LAB_RESULTS"; SQL statement:
+SELECT * FROM PATIENTS
+
+SELECT * FROM LAB_RESULTS [42000-200]
